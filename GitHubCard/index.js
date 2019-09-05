@@ -34,16 +34,16 @@ const cards = document.querySelector('.cards');
 function profile(info){
   // CREATE ELEMENTS
   const 
-    card = document.createElement('div');
-    cardImg = document.createElement('img');
-    cardInfo = document.createElement('div');
-    cardName = document.createElement('h3');
-    cardUsername = document.createElement('p');
-    cardLocation = document.createElement('p');
-    cardInsertLink = document.createElement('p');
-    cardLink = document.createElement('a');
-    cardFollowers = document.createElement('p');
-    cardFollowing = document.createElement('p');
+    card = document.createElement('div'),
+    cardImg = document.createElement('img'),
+    cardInfo = document.createElement('div'),
+    cardName = document.createElement('h3'),
+    cardUsername = document.createElement('p'),
+    cardLocation = document.createElement('p'),
+    cardInsertLink = document.createElement('p'),
+    cardLink = document.createElement('a'),
+    cardFollowers = document.createElement('p'),
+    cardFollowing = document.createElement('p'),
     cardBio = document.createElement('p');
   
   // ADD CLASSES
@@ -53,13 +53,13 @@ function profile(info){
   cardUsername.classList.add('username');
 
   // ADD CONTENT
-  cardImg.src = avatar_url;
-  cardName.textContent = name;
-  cardUsername.textContent = login;
+  cardImg.src = `${this.avatar_url}`;
+  cardName.textContent = `${this.name}`;
+  cardUsername.textContent = `${this.login}`;
   cardLocation.textContent = `Location: ${this.location}`;
   cardInsertLink.textContent = `Profile: `;
-  cardLink.href = html_url;
-  cardLink.textContent = html_url;
+  cardLink.href = `${this.html_url}`;
+  cardLink.textContent = `${this.html_url}`;
   cardFollowers = `Followers: ${this.followers}`;
   cardFollowing = `Following: ${this.following}`;
   cardBio = `Bio: ${this.bio}`;
@@ -83,10 +83,8 @@ axios
   .get('https://api.github.com/users/JameaKidrick')
   .then(response => {
     console.log(response);
-    response.data.message.forEach(item => {
-      const githubProfiles = profile(item);
+      const githubProfiles = profile(response.data);
       cards.appendChild(githubProfiles);
-    });
   })
   .catch(error => {
     console.log (`The data was not returned`, error);
