@@ -51,27 +51,44 @@ function profile(info){
   // CREATE ELEMENTS
   const 
     card = document.createElement('div'),
+    cardMore = document.createElement('div'),
     cardImg = document.createElement('img'),
     cardInfo = document.createElement('div'),
     cardName = document.createElement('h3'),
     cardUsername = document.createElement('p'),
+    cardEmail = document.createElement('p')
     cardLocation = document.createElement('p'),
     cardInsertLink = document.createElement('p'),
     cardLink = document.createElement('a'),
     cardFollowers = document.createElement('p'),
     cardFollowing = document.createElement('p'),
-    cardBio = document.createElement('p');
+    cardBio = document.createElement('p'),
+    cardHireable = document.createElement('p');
   
   // ADD CLASSES
   card.classList.add('card');
   cardInfo.classList.add('card-info');
   cardName.classList.add('name');
   cardUsername.classList.add('username');
+  cardEmail.classList.add('email');
+  cardMore.classList.add('close');
+
+  // STYLING 'CLOSE' CLASS
+  // const closeStyle = document.querySelector('.close');
+
+  cardMore.style.position = 'relative';
+  cardMore.style.border = '2px solid black';
+  cardMore.style.margin = '0 auto';
+  cardMore.style.width = '85%';
+  // cardMore.style.top = '50%'
+
+
 
   // ADD CONTENT
   cardImg.src = `${info.avatar_url}`;
   cardName.textContent = `${info.name}`;
   cardUsername.textContent = `${info.login}`;
+  cardEmail.textContent = `Email: ${info.email}`;
   cardLocation.textContent = `Location: ${info.location}`;
   cardInsertLink.textContent = `Profile: `;
   cardLink.href = `${info.html_url}`;
@@ -79,18 +96,23 @@ function profile(info){
   cardFollowers.textContent = `Followers: ${info.followers}`;
   cardFollowing.textContent = `Following: ${info.following}`;
   cardBio.textContent = `Bio: ${info.bio}`;
+  cardHireable.textContent = `Hireable?: ${info.hireable}`;
 
   // APPEND
   card.appendChild(cardImg);
   card.appendChild(cardInfo);
   cardInfo.appendChild(cardName);
   cardInfo.appendChild(cardUsername);
-  cardInfo.appendChild(cardLocation);
-  cardInfo.appendChild(cardInsertLink);
+  cardInfo.appendChild(cardEmail);
+  cardMore.appendChild(cardLocation);
+  cardMore.appendChild(cardInsertLink);
   cardInsertLink.appendChild(cardLink);
-  cardInfo.appendChild(cardFollowers);
-  cardInfo.appendChild(cardFollowing);
-  cardInfo.appendChild(cardBio);
+  cardMore.appendChild(cardFollowers);
+  cardMore.appendChild(cardFollowing);
+  cardMore.appendChild(cardBio);
+  cardMore.appendChild(cardHireable);
+  card.appendChild(cardMore);
+
 
   return card;
 }
@@ -121,5 +143,8 @@ followersArray.forEach(item => {
       console.log(`The data was not returned`, error);
     });
 })
+
+
+
 
 
