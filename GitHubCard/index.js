@@ -95,33 +95,31 @@ function profile(info){
   return card;
 }
 
+// REQUESTED DATA FROM API ABOUT MYSELF
 axios
   .get('https://api.github.com/users/JameaKidrick')
   .then(response => {
     console.log(response);
-      cards.appendChild(profile(response.data));
+    cards.appendChild(profile(response.data));
   })
   .catch(error => {
     console.log (`The data was not returned`, error);
   });
 
-
-/* 
-*/
-
+  // REQUESTED DATA FROM API ABOUT MY FOLLOWERS
 const followersArray = ['hillan1152', 'cjgodfather', 'mary-clayton', 'bayronpuac', 'alecblkly'];
 
 followersArray.forEach(item => {
   axios
-  .get(`https://api.github.com/users/${item}`)
-  .then(response => {
-    console.log(response);
-    console.log(response.data);
-    cards.appendChild(profile(response.data));
-  })
-  .catch(error => {
-    console.log(`The data was not returned`, error);
-  });
+    .get(`https://api.github.com/users/${item}`)
+    .then(response => {
+      console.log(response);
+      console.log(response.data);
+      cards.appendChild(profile(response.data));
+    })
+    .catch(error => {
+      console.log(`The data was not returned`, error);
+    });
 })
 
 
