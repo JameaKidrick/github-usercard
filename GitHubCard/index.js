@@ -78,9 +78,16 @@ function profile(info){
 
   cardMore.style.position = 'relative';
   cardMore.style.border = '2px solid black';
-  cardMore.style.margin = '0 auto';
-  cardMore.style.width = '85%';
+  // cardMore.style.margin = '0 auto';
+  cardMore.style.width = 'auto';
   // cardMore.style.top = '50%'
+  // cardMore.style.display = none;
+  cardMore.style.display = 'flex';
+  cardMore.style.flexDirection = 'column'
+  card.style.display = 'flex';
+  card.style.justifyContent = 'flex-end'
+  // card.style.flexDirection = 'column'
+  cardMore.style.marginLeft = '15%'
 
 
 
